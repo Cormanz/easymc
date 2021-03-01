@@ -1,0 +1,48 @@
+{
+  "_from": "easymc",
+  "_id": "easymc@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-Pn9oVJljhBjSULFASUe7dpOUshrsBKle1RTPbpPSEyMvjAnPi03POtCKtvASt4DeSvalWehmEIdq7arnHnn2DQ==",
+  "_location": "/easymc",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "easymc",
+    "name": "easymc",
+    "escapedName": "easymc",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/easymc/-/easymc-1.0.1.tgz",
+  "_shasum": "4f305e2e4f7ac897bf686a4e4010cbc173907d33",
+  "_spec": "easymc",
+  "_where": "C:\\Users\\Corwin\\Javascript\\Node\\Projects\\Bot",
+  "author": {
+    "name": "Corman"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "got": "^11.8.1"
+  },
+  "deprecated": false,
+  "description": "An API for easymc.io, a site which allows you to use tokens to login to Minecraft accounts.",
+  "keywords": [
+    "minecraft",
+    "alts",
+    "minecraft alts",
+    "easymc",
+    "easymc.io",
+    "easymc api",
+    "easymc alts"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "easymc",
+  "version": "1.0.1"
+}
