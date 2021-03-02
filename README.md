@@ -1,39 +1,49 @@
-The `easymc` package, an API for the `easymc.io` website. EasyMC is a site, similar to MCLeaks and TheAltening, where it lets you get tokens to login to accounts with, using their own auth servers. It allows you to login with Minecraft accounts.
+# easymc
 
-Unfortunately, this package doesn\'t support renewing alts since that requires automating the captcha, but it does allow for getting alts.
+API for `easymc.io`, and automatically generating and logging into alts.
 
-## Getting Started
+[![NPM version](https://img.shields.io/npm/v/easymc.svg)](http://npmjs.com/package/easymc) [![Discord](https://img.shields.io/badge/chat-on%20discord-brightgreen.svg)](https://discord.gg/nXaMaJPPvQ)
 
-Here\'s an example of `easymc`:
+A package that allows you to use `easymc.io`'s API to generate alts, and even login to them (using a proxy auth server). It supports `mineflayer` ande `minecraft-protocol`, with builtin functionality to create clients and bots with them.
 
-```ts
-import easymc from 'easymc';
+## Features
 
-async function main() {
-	const alt = await easymc.alt();
-	console.log(`Token is ${alt.token}, Username is ${alt.username}`);
-}
+- Generating alts with the EasyMC API
+- Grabbing the client settings (EasyMC version, EasyMC auth server, etc)
+- Logging into servers
+- Redeeming tokens and getting the full username and session.
+- Creating `minecraft-protocol` clients
+- Creating `mineflayer` bots
 
-main();
-```
+## Usage
 
-It lets you get the alt using `easymc.alt()` and logs the token name and username. Note that the username usually is partially `*`s.
+`npm install easymc`
 
-You can also get the skin of an alt.
+## Examples
+
+#### Generating an alt
 
 ```ts
 const alt = await easymc.alt();
-const skin = await alt.getSkin();
+console.log(alt.username); //Has some asterisks (*)
+console.log(alt.token); //The alt token
 ```
 
-If you want to access the API at a lower level, you can do so like so:
+#### Creating a mineflayer bot to log the chat
 ```ts
-const altData = await easymc.get('/?new=True');
+const bot = await easymc.createBot();
+bot.on('chat', (player, message) => {
+	console.log(`${player}: ${message}`);
+});
 ```
 
-Finally, seprately from the default import of the module are the `authServer` and `sessionServer` values.
+#### Get the current EasyMC Client version
 
 ```ts
-import easymc, { authServer, sessionServer } from 'easymc';
+const { version } = await easymc.clientSettings();
+console.log(`Current Version: ${version}`);
 ```
-These can be used with packages like `mineflayer` or `node-minecraft-protocol` to let you login to EasyMC alts in theory.
+
+## Licence
+
+[MIT](LICENCE)
