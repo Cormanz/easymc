@@ -2,7 +2,6 @@ import got from 'got';
 import { AltData, AltRedemption, ClientSettings, SessionJoin, SessionJoinServerHash, SessionJoinServerId } from './interfaces';
 import { Bot, createBot } from 'mineflayer';
 import { Client, createClient } from 'minecraft-protocol';
-import { createServer } from './server';
 
 export const defaultProxy = 'https://easymc-serverproxy.glitch.me';
 
@@ -196,9 +195,6 @@ export class EasyMC {
                 server
             }
         });
-    }
-    createServer() {
-        return createServer();
     }
     /**
      * Creates a client with `minecraft-protocol` that you can use to login to an alt and manage packets at a low level.

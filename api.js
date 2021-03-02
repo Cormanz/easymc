@@ -51,7 +51,6 @@ exports.EasyMC = exports.Alt = exports.defaultProxy = void 0;
 var got_1 = require("got");
 var mineflayer_1 = require("mineflayer");
 var minecraft_protocol_1 = require("minecraft-protocol");
-var server_1 = require("./server");
 exports.defaultProxy = 'https://easymc-serverproxy.glitch.me';
 var Alt = /** @class */ (function () {
     function Alt(client, data) {
@@ -314,9 +313,6 @@ var EasyMC = /** @class */ (function () {
                 }
             });
         });
-    };
-    EasyMC.prototype.createServer = function () {
-        return server_1.createServer();
     };
     /**
      * Creates a client with `minecraft-protocol` that you can use to login to an alt and manage packets at a low level.
