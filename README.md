@@ -1,6 +1,6 @@
 # easymc
 
-API for `easymc.io`, and automatically generating and logging into alts.
+API for `easymc.io`, allowing you to automatically redeem alts from their tokens with EasyMC.
 
 [![NPM version](https://img.shields.io/npm/v/easymc.svg)](http://npmjs.com/package/easymc) [![Discord](https://img.shields.io/badge/chat-on%20discord-brightgreen.svg)](https://discord.gg/nXaMaJPPvQ)
 
@@ -21,17 +21,9 @@ A package that allows you to use `easymc.io`'s API to generate alts, and even lo
 
 ## Examples
 
-#### Generating an alt
-
-```ts
-const alt = await easymc.alt();
-console.log(alt.username); //Has some asterisks (*)
-console.log(alt.token); //The alt token
-```
-
 #### Creating a mineflayer bot to log the chat
 ```ts
-const bot = await easymc.createBot();
+const bot = await easymc.createBot(token);
 bot.on('chat', (player, message) => {
 	console.log(`${player}: ${message}`);
 });
@@ -44,6 +36,10 @@ const { version } = await easymc.clientSettings();
 console.log(`Current Version: ${version}`);
 ```
 
+#### Note
+
+This package no longer allows you to generate alts since the captcha timeout was increased to 30 seconds.
+
 ## Licence
 
-[MIT](LICENCE)
+[ISC](LICENCE)

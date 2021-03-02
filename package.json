@@ -1,6 +1,6 @@
 {
     "name": "easymc",
-    "version": "1.0.2",
+    "version": "1.0.6",
     "description": "An API for easymc.io, a site which allows you to use tokens to login to Minecraft accounts.",
     "main": "index.js",
     "keywords": [

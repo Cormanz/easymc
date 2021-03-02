@@ -120,11 +120,23 @@ export class EasyMC {
         });
     }
     /**
+     * @deprecated EasyMC has changed to require a captcha every 30 seconds, so this won't work.
      * Generates an alt. May require you go to onto the EasyMC site first and get one so that you can refresh the captcha.
      * @param newAlt Whether to generate a new alt or use the last previously generated one
      */
-    async alt(newAlt = true) {
+    async generate(newAlt = true) {
         const alt: AltData = await this.get(newAlt ? `/token?new=true` : `/token`);
+
+        return new Alt(this, alt);
+    }
+    /**
+     * Creates an alt object from the token.
+     * @param token 
+     */
+    async alt(token: string) {
+        const alt: AltData = {
+            token
+        };
 
         return new Alt(this, alt);
     }
@@ -200,15 +212,15 @@ export class EasyMC {
      * Creates a client with `minecraft-protocol` that you can use to login to an alt and manage packets at a low level.
      * @param opts The options to use with `minecraft-protocol`.
      */
-    async createClient(opts: any): Promise<Client> {
-        return this.alt().then(i => i.createClient(opts));
+    async createClient(token: string, opts: any): Promise<Client> {
+        return this.alt(token).then(i => i.createClient(opts));
     }
     /**
      * Creates a bot with `mineflayer` that you can use to manage the bot at a higher level.
      * @param opts The options to use with `mineflayer`.
      */
-    async createBot(opts: any): Promise<Client  | Bot> {
-        return this.alt().then(i => i.createBot(opts));
+    async createBot(token: string, opts: any): Promise<Client  | Bot> {
+        return this.alt(token).then(i => i.createBot(opts));
     }
 }
 

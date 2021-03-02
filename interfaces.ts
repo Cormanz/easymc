@@ -10,9 +10,9 @@ export interface ClientSettings {
 
 export interface AltData {
     token: string;
-    username: string;
-    expiresIn: number;
-    renewIn: number;
+    username?: string;
+    expiresIn?: number;
+    renewIn?: number;
 }
 
 export interface AltRedemption {

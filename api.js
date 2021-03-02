@@ -197,10 +197,11 @@ var EasyMC = /** @class */ (function () {
         });
     };
     /**
+     * @deprecated EasyMC has changed to require a captcha every 30 seconds, so this won't work.
      * Generates an alt. May require you go to onto the EasyMC site first and get one so that you can refresh the captcha.
      * @param newAlt Whether to generate a new alt or use the last previously generated one
      */
-    EasyMC.prototype.alt = function (newAlt) {
+    EasyMC.prototype.generate = function (newAlt) {
         if (newAlt === void 0) { newAlt = true; }
         return __awaiter(this, void 0, void 0, function () {
             var alt;
@@ -211,6 +212,21 @@ var EasyMC = /** @class */ (function () {
                         alt = _a.sent();
                         return [2 /*return*/, new Alt(this, alt)];
                 }
+            });
+        });
+    };
+    /**
+     * Creates an alt object from the token.
+     * @param token
+     */
+    EasyMC.prototype.alt = function (token) {
+        return __awaiter(this, void 0, void 0, function () {
+            var alt;
+            return __generator(this, function (_a) {
+                alt = {
+                    token: token
+                };
+                return [2 /*return*/, new Alt(this, alt)];
             });
         });
     };
@@ -318,10 +334,10 @@ var EasyMC = /** @class */ (function () {
      * Creates a client with `minecraft-protocol` that you can use to login to an alt and manage packets at a low level.
      * @param opts The options to use with `minecraft-protocol`.
      */
-    EasyMC.prototype.createClient = function (opts) {
+    EasyMC.prototype.createClient = function (token, opts) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.alt().then(function (i) { return i.createClient(opts); })];
+                return [2 /*return*/, this.alt(token).then(function (i) { return i.createClient(opts); })];
             });
         });
     };
@@ -329,10 +345,10 @@ var EasyMC = /** @class */ (function () {
      * Creates a bot with `mineflayer` that you can use to manage the bot at a higher level.
      * @param opts The options to use with `mineflayer`.
      */
-    EasyMC.prototype.createBot = function (opts) {
+    EasyMC.prototype.createBot = function (token, opts) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.alt().then(function (i) { return i.createBot(opts); })];
+                return [2 /*return*/, this.alt(token).then(function (i) { return i.createBot(opts); })];
             });
         });
     };
